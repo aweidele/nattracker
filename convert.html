@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Natasha Tracker</title>
+  </head>
+  <body>
+    <h1>Tracker</h1>
+    <div class="csv"></div>
+    <script>
+      const csvContainer = document.querySelector(".csv");
+      const vals = [
+        {
+          date: "January 20, 2024",
+          time: "8:45 AM",
+          water: "",
+
+          output: "Small",
+          consistency: "Liquid",
+          notes: "Clear water in overnight pullup. Not pee.",
+        },
+        {
+          date: "January 20, 2024",
+          time: "1:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Single hard poop + watery",
+        },
+        {
+          date: "January 20, 2024",
+          time: "3:45 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Hard poop",
+        },
+        {
+          date: "January 20, 2024",
+          time: "7:30 PM",
+          water: "",
+
+          output: "Medium",
+          consistency: "Hard",
+          notes: "",
+        },
+        {
+          date: "January 21, 2024",
+          time: "3:30 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "January 21, 2024",
+          time: "4:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "January 21, 2024",
+          time: "6:30 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Crumbs",
+        },
+        {
+          date: "January 22, 2024",
+          time: "1:15 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Hard crumbs and a streak",
+        },
+        {
+          date: "January 22, 2024",
+          time: "5:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "",
+        },
+        {
+          date: "January 23, 2024",
+          time: "8:30 AM",
+          water: "",
+
+          output: "Small",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "January 23, 2024",
+          time: "4:40 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Liquid",
+          notes: "Small wet spot after school",
+        },
+        {
+          date: "January 23, 2024",
+          time: "7:30 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "crumbs",
+        },
+        {
+          date: "January 24, 2024",
+          time: "9:00 AM",
+          water: "",
+
+          output: "Small",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "January 25, 2024",
+          time: "6:30 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Soft",
+          notes: "Very small smudge",
+        },
+        {
+          date: "January 26, 2024",
+          time: "6:15 PM",
+          water: "",
+
+          output: "Large",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "January 27, 2024",
+          time: "10:30 AM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Small crumbs in pull-up, was clean overnight",
+        },
+        {
+          date: "January 27, 2024",
+          time: "1:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "January 27, 2024",
+          time: "4:00 PM",
+          water: "",
+
+          output: "Large",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "January 28, 2024",
+          time: "6:30 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Small crumbs",
+        },
+        {
+          date: "January 29, 2024",
+          time: "",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Small crumbs",
+        },
+        {
+          date: "January 30, 2024",
+          time: "4:00 PM",
+          water: "",
+
+          output: "Medium",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "January 30, 2024",
+          time: "4:50 PM",
+          water: "",
+
+          output: "Large",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "January 30, 2024",
+          time: "5:15 PM",
+          water: "",
+
+          output: "Large",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "January 30, 2024",
+          time: "5:30 PM",
+          water: "",
+
+          output: "Large",
+          consistency: "Soft",
+          notes: "Sat on potty, pooped",
+        },
+        {
+          date: "January 30, 2024",
+          time: "7:40 PM",
+          water: "",
+
+          output: "Medium",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "January 31, 2024",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents all day",
+        },
+        {
+          date: "February 1, 2024",
+          time: "5:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Skid marks in undies after school",
+        },
+        {
+          date: "February 2, 2024",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents all day",
+        },
+        {
+          date: "February 3, 2024",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents all day",
+        },
+        {
+          date: "February 4, 2024",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents all day",
+        },
+        {
+          date: "February 5, 2024",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents all day",
+        },
+        {
+          date: "2/6/24",
+          time: "5:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Skid marks in undies at end of school day with a few hard crumbs",
+        },
+        {
+          date: "2/6/24",
+          time: "7:15 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "",
+        },
+        {
+          date: "2/7/24",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents all day",
+        },
+        {
+          date: "2/8/24",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents all day",
+        },
+        {
+          date: "2/9/24",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents all day",
+        },
+        {
+          date: "2/10/24",
+          time: "8:00 AM",
+          water: "",
+
+          output: "Small",
+          consistency: "Liquid",
+          notes: "Water with crumbs",
+        },
+        {
+          date: "2/10/24",
+          time: "12:15 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Crumbs/skidmark",
+        },
+        {
+          date: "2/10/24",
+          time: "12:50 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Small accident in tub",
+        },
+        {
+          date: "2/10/24",
+          time: "7:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "",
+        },
+        {
+          date: "2/10/24",
+          time: "7:50 PM",
+          water: "",
+
+          output: "Medium",
+          consistency: "Hard",
+          notes: "Fairly large accident after peristeen",
+        },
+        {
+          date: "February 11, 2024",
+          time: "11:00 AM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "",
+        },
+        {
+          date: "February 11, 2024",
+          time: "1:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Very small amount",
+        },
+        {
+          date: "February 12, 2024",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents all day",
+        },
+        {
+          date: "February 13, 2024",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents all day",
+        },
+        {
+          date: "February 14, 2024",
+          time: "5:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Streaks + poop ball",
+        },
+        {
+          date: "February 15, 2024",
+          time: "4:45 PM",
+          water: "",
+
+          output: "Medium",
+          consistency: "Hard",
+          notes: "",
+        },
+        {
+          date: "February 15, 2024",
+          time: "7:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "",
+        },
+        {
+          date: "February 16, 2024",
+          time: "5:30 PM",
+          water: "",
+
+          output: "Medium",
+          consistency: "Soft",
+          notes: "Medium streak in undies",
+        },
+        {
+          date: "February 16, 2024",
+          time: "6:45 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "A couple of crumbs",
+        },
+        {
+          date: "February 18, 2024",
+          time: "3:45 PM",
+          water: "",
+
+          output: "Large",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "February 19, 2024",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents all day",
+        },
+        {
+          date: "February 20, 2024",
+          time: "",
+          water: "",
+
+          output: "",
+          consistency: "",
+          notes: "No accidents",
+        },
+        {
+          date: "February 21, 2024",
+          time: "5:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Small streak + medium-soft ball",
+        },
+        {
+          date: "February 22, 2024",
+          time: "6:15 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Soft",
+          notes: "Small poop in potty right before Peristeen",
+        },
+        {
+          date: "February 23, 2024",
+          time: "8:30 AM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "A couple small balls overnight",
+        },
+        {
+          date: "February 24, 2024",
+          time: "5:30 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Soft",
+          notes: "Poop in potty",
+        },
+        {
+          date: "February 25, 2024",
+          time: "",
+          water: "",
+
+          output: "none",
+          consistency: "none",
+          notes: "no accidents",
+        },
+        {
+          date: "February 26, 2024",
+          time: "5:30 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Soft",
+          notes: "Small smudge in undies",
+        },
+        {
+          date: "February 27, 2024",
+          time: "5:00 PM",
+          water: "",
+
+          output: "Medium",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "February 28, 2024",
+          time: "8:00 AM",
+          water: "",
+
+          output: "Medium",
+          consistency: "Soft",
+          notes: "Medium accident overnight",
+        },
+        {
+          date: "February 28, 2024",
+          time: "7:00 PM",
+          water: "",
+
+          output: "Medium",
+          consistency: "",
+          notes: "Soft and hard",
+        },
+        {
+          date: "February 29, 2024",
+          time: "5:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Small smear in undies",
+        },
+        {
+          date: "March 1, 2024",
+          time: "4:00 PM",
+          water: "",
+
+          output: "Large",
+          consistency: "Soft",
+          notes: "Very large accident in undies at school",
+        },
+        {
+          date: "March 1, 2024",
+          time: "6:30 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "Crumbs",
+        },
+        {
+          date: "March 2, 2024",
+          time: "7:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "March 3, 2024",
+          time: "9:00 AM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "crumbs when we tried to do a bath",
+        },
+        {
+          date: "March 3, 2024",
+          time: "1:30 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "small skid",
+        },
+        {
+          date: "March 3, 2024",
+          time: "6:45 AM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "small skid",
+        },
+        {
+          date: "March 4, 2024",
+          time: "",
+          water: "",
+
+          output: "none",
+          consistency: "",
+          notes: "",
+        },
+        {
+          date: "March 5, 2024",
+          time: "3:30 PM",
+          water: "",
+
+          output: "Large",
+          consistency: "Soft",
+          notes: "Accident at school",
+        },
+        {
+          date: "March 5, 2024",
+          time: "5:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "March 5, 2024",
+          time: "6:00 PM",
+          water: "",
+
+          output: "Large",
+          consistency: "Soft",
+          notes: "",
+        },
+        {
+          date: "March 6, 2024",
+          time: "5:00 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "",
+        },
+        {
+          date: "March 6, 2024",
+          time: "7:15 PM",
+          water: "",
+
+          output: "Medium",
+          consistency: "Hard",
+          notes: "",
+        },
+        {
+          date: "March 10, 2024",
+          time: "7:15 PM",
+          water: "",
+
+          output: "Small",
+          consistency: "Hard",
+          notes: "",
+        },
+      ];
+      // const vals = [
+      //   {
+      //     date: "January 20, 2024",
+      //     time: "7:30 PM",
+      //     water: "200ml",
+      //     output: "Large",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "January 21, 2024",
+      //     time: "10:45 AM",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Soft",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "January 22, 2024",
+      //     time: "8:30 AM",
+      //     water: "200ml",
+      //     output: "Large",
+      //     consistency: "Soft",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "January 24, 2024",
+      //     time: "9:00 AM",
+      //     water: "200ml",
+      //     output: "Large",
+      //     consistency: "Medium",
+      //     notes: "balloon popped on first attempt. tried again, and it leaked, third time successful",
+      //   },
+      //   {
+      //     date: "January 24, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Soft",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "January 25, 2024",
+      //     time: "7:30 PM",
+      //     water: "200ml",
+      //     output: "Large",
+      //     consistency: "Medium",
+      //     notes: "Big ol pile",
+      //   },
+      //   {
+      //     date: "January 26, 2024",
+      //     time: "6:45 PM",
+      //     water: "200ml",
+      //     output: "Large",
+      //     consistency: "Medium",
+      //     notes: "Started and got leaked, so we emptied and did another 200ml",
+      //   },
+      //   {
+      //     date: "January 27, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Medium-large",
+      //     consistency: "Medium",
+      //     notes: "200, them emptied, then another 200",
+      //   },
+      //   {
+      //     date: "January 28, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Medium-large",
+      //     consistency: "Medium",
+      //     notes: "200, them emptied, then another 200",
+      //   },
+      //   {
+      //     date: "January 29, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Medium-large",
+      //     consistency: "Medium",
+      //     notes: "200, them emptied, then another 200",
+      //   },
+      //   {
+      //     date: "January 30, 2024",
+      //     time: "7:30 PM",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Medium",
+      //     notes: "Not so big, but there had been many accidents prior to peristeen",
+      //   },
+      //   {
+      //     date: "January 31, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 1, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Medium-large",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 2, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Soft",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 3, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Large",
+      //     consistency: "Soft",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 4, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Soft",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 5, 2024",
+      //     time: "7:15 PM",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Medium",
+      //     notes: "Almost nothing",
+      //   },
+      //   {
+      //     date: "February 6, 2024",
+      //     time: "7:20 PM",
+      //     water: "200ml",
+      //     output: "Extra Large",
+      //     consistency: "Formed",
+      //     notes: "Maybe the biggest output we've ever seen!!",
+      //   },
+      //   {
+      //     date: "February 7, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 8, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 9, 2024",
+      //     time: "5:15 PM",
+      //     water: "200ml",
+      //     output: "Medium-large",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 10, 2024",
+      //     time: "7:00 PM",
+      //     water: "220ml",
+      //     output: "Large",
+      //     consistency: "Formed",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 11, 2024",
+      //     time: "1:00 PM",
+      //     water: "200ml",
+      //     output: "Large",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 11, 2024",
+      //     time: "7:15 PM",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Medium",
+      //     notes: "Almost none, but we did Peristeen earlier in the day",
+      //   },
+      //   {
+      //     date: "February 12, 2024",
+      //     time: "6:40 PM",
+      //     water: "220ml",
+      //     output: "",
+      //     consistency: "",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 13, 2024",
+      //     time: "",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Medium",
+      //     notes: "Very small",
+      //   },
+      //   {
+      //     date: "February 14, 2024",
+      //     time: "",
+      //     water: "200ml",
+      //     output: "Medium-large",
+      //     consistency: "Medium",
+      //     notes: "Happy Valentine's Day! ❤️",
+      //   },
+      //   {
+      //     date: "February 15, 2024",
+      //     time: "7:00 PM",
+      //     water: "220ml",
+      //     output: "Extra Large",
+      //     consistency: "Soft",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 16, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 17, 2024",
+      //     time: "7:10 PM",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Formed",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 18, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Formed",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 19, 2024",
+      //     time: "6:45 PM",
+      //     water: "210ml",
+      //     output: "Medium",
+      //     consistency: "Formed",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 20, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Formed",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 21, 2024",
+      //     time: "7:10 PM",
+      //     water: "375ml",
+      //     output: "Medium",
+      //     consistency: "Medium",
+      //     notes: "200ml, emptied, then another 150ml",
+      //   },
+      //   {
+      //     date: "February 22, 2024",
+      //     time: "6:15 PM",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 23, 2024",
+      //     time: "7:00 PM",
+      //     water: "220ml",
+      //     output: "Large",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 24, 2024",
+      //     time: "7:30 PM",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 25, 2024",
+      //     time: "",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 26, 2024",
+      //     time: "7:15 PM",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 27, 2024",
+      //     time: "7:15 AM",
+      //     water: "200ml",
+      //     output: "Medium-large",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 28, 2024",
+      //     time: "7:10 PM",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Medium",
+      //     notes: "Did it twice, not much output",
+      //   },
+      //   {
+      //     date: "February 29, 2024",
+      //     time: "",
+      //     water: "200ml",
+      //     output: "Large",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "March 1, 2024",
+      //     time: "7:00 PM",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "March 2, 2024",
+      //     time: "8:50 AM",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "March 3, 2024",
+      //     time: "7:15 PM",
+      //     water: "200ml",
+      //     output: "Large",
+      //     consistency: "Soft",
+      //     notes: "liquidy",
+      //   },
+      //   {
+      //     date: "March 3, 2024",
+      //     time: "6:45 PM",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Soft",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "March 4, 2024",
+      //     time: "6:50 PM",
+      //     water: "200ml",
+      //     output: "Medium",
+      //     consistency: "Soft",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "March 5, 2024",
+      //     time: "7:10 PM",
+      //     water: "250ml",
+      //     output: "Small",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "March 6, 2024",
+      //     time: "7:15 PM",
+      //     water: "200ml",
+      //     output: "Medium-large",
+      //     consistency: "Formed",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "March 8, 2024",
+      //     time: "",
+      //     water: "200ml",
+      //     output: "Extra Large",
+      //     consistency: "Formed",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "March 9, 2024",
+      //     time: "",
+      //     water: "200ml",
+      //     output: "Large",
+      //     consistency: "Formed",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "February 10, 2024",
+      //     time: "7:15 PM",
+      //     water: "200ml",
+      //     output: "Extra Large",
+      //     consistency: "Formed",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "March 11, 2024",
+      //     time: "",
+      //     water: "200ml",
+      //     output: "Small",
+      //     consistency: "Formed",
+      //     notes: "",
+      //   },
+      //   {
+      //     date: "March 12, 2024",
+      //     time: "6:50 PM",
+      //     water: "250ml",
+      //     output: "Medium",
+      //     consistency: "Medium",
+      //     notes: "",
+      //   },
+      // ];
+      vals.forEach((v) => {
+        const date = new Date(`${v.date} ${v.time}`);
+        const dateContent = `${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getUTCDate()).slice(-2)} ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}:${("0" + date.getSeconds()).slice(-2)}`;
+        const line = document.createElement("div");
+        line.innerText = dateContent;
+        csvContainer.appendChild(line);
+        v.date = dateContent;
+        v.type = 2;
+        delete v.time;
+      });
+      const replacer = (key, value) => (value === null ? "" : value);
+      const header = Object.keys(vals[0]);
+      const csv = [
+        header.join(","), // header row first
+        ...vals.map((row) => header.map((fieldName) => JSON.stringify(row[fieldName], replacer)).join(",")),
+      ].join("\r\n");
+
+      console.log(csv);
+      console.log(vals);
+    </script>
+  </body>
+</html>

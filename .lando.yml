@@ -1,0 +1,4 @@
+name: nattracker
+recipe: lamp
+config:
+  webroot: .
